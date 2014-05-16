@@ -15,5 +15,15 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
   end
+
+  def edit
+    @artist = Artist.find(params[:id])
+  end
+
+  def update
+    @artist = Artist.find(params[:id])
+    @artist.update(name: params[:artist][:name], genre: params[:artist][:genre])
+    redirect_to root_path
+  end
 end
 

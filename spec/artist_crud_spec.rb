@@ -21,4 +21,19 @@ feature 'User can CRUD artists' do
     expect(page).to have_content('Whitney Houston')
     expect(page).to have_content('R&B')
   end
+
+  scenario 'User can edit an artists name and genre' do
+    visit '/'
+    click_on 'Add an Artist'
+    fill_in 'artist[name]', with: 'Whitney Houston'
+    fill_in 'artist[genre]', with: 'R&B'
+    click_on 'Create Artist'
+    click_on 'Whitney Houston'
+    click_on 'Edit'
+    fill_in 'artist[name]', with: 'Micheal Jackson'
+    fill_in 'artist[genre]', with: 'Pop'
+    click_on 'Update Artist'
+    expect(page).to have_content('Micheal Jackson')
+    expect(page).to have_content('Pop')
+  end
 end
