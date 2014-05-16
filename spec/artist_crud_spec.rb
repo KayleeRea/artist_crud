@@ -10,4 +10,15 @@ feature 'User can CRUD artists' do
     expect(page).to have_content('Whitney Houston')
     expect(page).to have_content('R&B')
   end
+
+  scenario 'User can see a show page for the artist' do
+    visit '/'
+    click_on 'Add an Artist'
+    fill_in 'artist[name]', with: 'Whitney Houston'
+    fill_in 'artist[genre]', with: 'R&B'
+    click_on 'Create Artist'
+    click_on 'Whitney Houston'
+    expect(page).to have_content('Whitney Houston')
+    expect(page).to have_content('R&B')
+  end
 end

@@ -11,4 +11,9 @@ class ArtistsController < ApplicationController
     Artist.create(name: params[:artist][:name], genre: params[:artist][:genre])
     redirect_to root_path
   end
+
+  def show
+    @artist = Artist.find(params[:id])
+  end
 end
+
