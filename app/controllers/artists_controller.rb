@@ -25,5 +25,12 @@ class ArtistsController < ApplicationController
     @artist.update(name: params[:artist][:name], genre: params[:artist][:genre])
     redirect_to root_path
   end
+
+  def destroy
+    @artist = Artist.find(params[:id])
+    @artist.destroy
+    redirect_to root_path
+  end
+
 end
 
